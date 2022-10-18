@@ -9,7 +9,10 @@ public class Player : MonoBehaviour
 
     public ParticleSystem runningCloud;
 
+    public Light light;
+
     private Vector3 lastPosition = Vector3.zero;
+
 
     void Start()
     {
@@ -20,6 +23,16 @@ public class Player : MonoBehaviour
     {
         HandleRunning();
         HandleRunningCloud();
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            light.intensity += 0.01f;
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            light.intensity -= 0.01f;
+        }
     }
 
     void HandleRunningCloud() {
