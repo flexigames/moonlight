@@ -25,8 +25,9 @@ public class MazeSpawner : MonoBehaviour {
 	public int Columns = 5;
 	public float CellWidth = 5;
 	public float CellHeight = 5;
-	public bool AddGaps = true;
 	public GameObject GoalPrefab = null;
+	public GameObject enemyPrefab = null;
+	public int enemyCount = 5;
 
 	private BasicMazeGenerator mMazeGenerator = null;
 
@@ -52,10 +53,17 @@ public class MazeSpawner : MonoBehaviour {
 			break;
 		}
 		mMazeGenerator.GenerateMaze ();
+
+		for (int count = 0; count < enemyCount; count++) {
+			var row = Random.Range (0, Rows);
+			var column = Random.Range (0, Columns);
+			Instantiate (enemyPrefab, new Vector3 (row * CellWidth, 0, column * CellHeight), Quaternion.identity);
+		}
+
 		for (int row = 0; row < Rows; row++) {
 			for(int column = 0; column < Columns; column++){
-				float x = column*(CellWidth+(AddGaps?.2f:0));
-				float z = row*(CellHeight+(AddGaps?.2f:0));
+				float x = column * CellWidth;
+				float z = row * CellHeight;
 				MazeCell cell = mMazeGenerator.GetMazeCell(row,column);
 				GameObject tmp;
 				tmp = Instantiate(Floor,new Vector3(x,0,z), Quaternion.Euler(0,0,0)) as GameObject;
@@ -85,8 +93,8 @@ public class MazeSpawner : MonoBehaviour {
 		if(Pillar != null){
 			for (int row = 0; row < Rows+1; row++) {
 				for (int column = 0; column < Columns+1; column++) {
-					float x = column*(CellWidth+(AddGaps?.2f:0));
-					float z = row*(CellHeight+(AddGaps?.2f:0));
+					float x = column * CellWidth;
+					float z = row * CellHeight;
 					GameObject tmp = Instantiate(Pillar,new Vector3(x-CellWidth/2,0,z-CellHeight/2),Quaternion.identity) as GameObject;
 					tmp.transform.parent = transform;
 				}
