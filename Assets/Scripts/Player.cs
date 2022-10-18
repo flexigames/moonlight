@@ -48,4 +48,11 @@ public class Player : MonoBehaviour
 
         transform.rotation = Quaternion.LookRotation(direction);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Coin") {
+            Destroy(other.gameObject);
+        }
+    }
 }

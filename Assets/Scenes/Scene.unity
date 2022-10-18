@@ -163,7 +163,8 @@ MonoBehaviour:
   CellWidth: 4
   CellHeight: 4
   AddGaps: 0
-  GoalPrefab: {fileID: 0}
+  GoalPrefab: {fileID: 5649279589649445339, guid: dc148cb0375fc4156bff73bb289b6e28,
+    type: 3}
 --- !u!4 &46687161
 Transform:
   m_ObjectHideFlags: 0
@@ -694,7 +695,7 @@ GameObject:
   - component: {fileID: 1507625234}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
