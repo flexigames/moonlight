@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
-    public static bool isDark = true;
+    public static bool isDark;
 
     public Light gameLight;
 
@@ -13,7 +13,7 @@ public class Game : MonoBehaviour
 
     public GameObject lightBar;
 
-    private float lightCooldown = 0.0f;
+    private float lightCooldown = 1.0f;
 
     public static Game Instance {
         get {

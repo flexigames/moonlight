@@ -10,6 +10,6 @@ public class Camera : MonoBehaviour
     {
         if (target == null) return;
 
-        transform.position = new Vector3(target.position.x, transform.position.y, target.position.z - 15);        
+        transform.position = new Vector3(target.position.x, transform.position.y, target.position.z - 7);        
     }
 }

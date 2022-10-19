@@ -157,8 +157,8 @@ MonoBehaviour:
   FullRandom: 1
   RandomSeed: 3
   Floor: {fileID: 165842, guid: 8d3b36f175a633f429d7bda54c76550d, type: 3}
-  Wall: {fileID: 7495759419006716086, guid: 6da2b61bbfa1f4e5391cb98c30a05540, type: 3}
-  Pillar: {fileID: 916385455596813485, guid: 2aba4f4965aff4ad3bd0f0163a3ab95c, type: 3}
+  Wall: {fileID: 135797693784900522, guid: c158e243edcce4eb2a61f30f59d63010, type: 3}
+  Pillar: {fileID: 8512018860381370498, guid: aa4847e6b83c3419586d15a820de3cd1, type: 3}
   Rows: 10
   Columns: 10
   CellWidth: 4
@@ -267,7 +267,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 10
   m_Depth: -1
   m_CullingMask:
@@ -291,14 +291,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.42261827, y: -0, z: -0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: 20, z: -15}
+  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalPosition: {x: 0, y: 20, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
