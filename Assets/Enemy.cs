@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     }
 
     void Update() {
+        agent.speed = Game.isDark ? 1.0f : 3.0f;
         try {
             if (IsFollowingPlayer()) {
                 WalkToPlayer();
@@ -52,7 +53,8 @@ public class Enemy : MonoBehaviour
     }
 
     bool IsFollowingPlayer() {
-        return !Game.isDark;
+        return true;
+        // return !Game.isDark;
         // return lastDetectedTime + coolDown < Time.time;
     }
 
