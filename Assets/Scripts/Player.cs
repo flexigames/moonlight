@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Coin") {
             Destroy(other.gameObject);
+            Game.AddCoinToCollected();
         }
     }
 }

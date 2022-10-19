@@ -81,6 +81,7 @@ public class MazeSpawner : MonoBehaviour {
 				if(cell.IsGoal && GoalPrefab != null){
 					tmp = Instantiate(GoalPrefab,new Vector3(x,1,z), Quaternion.Euler(0,0,0)) as GameObject;
 					tmp.transform.parent = transform;
+					Game.AddCoinToTotal();
 				}
 			}
 		}
@@ -105,5 +106,7 @@ public class MazeSpawner : MonoBehaviour {
 			var column = Random.Range (0, Columns);
 			Instantiate (enemyPrefab, new Vector3 (row * CellWidth, 0, column * CellHeight), Quaternion.identity);
 		}
+
+		Game.OnMazeDone();
 	}	
 }
