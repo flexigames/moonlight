@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     }
 
     void Update() {
-        agent.speed = Game.isDark ? 1.0f : 3.0f;
+        agent.speed = Game.IsDark ? 1.0f : 3.0f;
         try {
             if (IsFollowingPlayer()) {
                 WalkToPlayer();
@@ -67,8 +67,10 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {
-            Destroy(other.gameObject);
-            Game.GameOver();
+            if (Game.PlayerCanDie) {
+                Destroy(other.gameObject);
+                Game.GameOver();
+            }
         }
     }
 }

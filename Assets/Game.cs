@@ -6,7 +6,11 @@ using TMPro;
 
 public class Game : MonoBehaviour
 {
-    public static bool isDark;
+    public bool isDark;
+
+    public bool playerCanDie = true;
+
+    public float gameLightIntensity = 0.4f;
 
     public Light gameLight;
 
@@ -21,6 +25,22 @@ public class Game : MonoBehaviour
     public int collectedCoins = 0;
 
     public TextMeshProUGUI coinText;
+
+    public static bool PlayerCanDie {
+        get {
+            return instance.playerCanDie;
+        }
+    }
+
+    public static bool IsDark {
+        get {
+            return Instance.isDark;
+        }
+
+        set {
+            Instance.isDark = value;
+        }
+    }
 
     public static Game Instance {
         get {
@@ -38,6 +58,7 @@ public class Game : MonoBehaviour
     void Update() {
         UpdateLightCooldown();
         UpdateCoinText();
+        UpdateDarkness();
     }
 
     void UpdateLightCooldown() {
@@ -68,15 +89,20 @@ public class Game : MonoBehaviour
     }
 
     public static void SetDarkness(bool isDark) {
-        Game.isDark = isDark;
+        Game.Instance.isDark = isDark;
+    }
+
+    public void UpdateDarkness() {
         if (isDark) {
-            Instance.gameLight.intensity = 0.0f;
+            gameLight.intensity = 0.0f;
         } else {
-            Instance.gameLight.intensity = 0.4f;
+            gameLight.intensity = gameLightIntensity;
         }
     }
 
     public static void GameOver() {
+        if (!Instance.playerCanDie) return;
+
         SetDarkness(true);
         
         SceneManager.LoadScene("GameOver");
