@@ -54,12 +54,6 @@ public class MazeSpawner : MonoBehaviour {
 		}
 		mMazeGenerator.GenerateMaze ();
 
-		for (int count = 0; count < enemyCount; count++) {
-			var row = Random.Range (0, Rows);
-			var column = Random.Range (0, Columns);
-			Instantiate (enemyPrefab, new Vector3 (row * CellWidth, 0, column * CellHeight), Quaternion.identity);
-		}
-
 		for (int row = 0; row < Rows; row++) {
 			for(int column = 0; column < Columns; column++){
 				float x = column * CellWidth;
@@ -104,5 +98,12 @@ public class MazeSpawner : MonoBehaviour {
 	    // Build surface mesh
 		var surface = GetComponent<NavMeshSurface>();
 		surface.BuildNavMesh();
-	}
+
+		// Spawn enemies
+		for (int count = 0; count < enemyCount; count++) {
+			var row = Random.Range (0, Rows);
+			var column = Random.Range (0, Columns);
+			Instantiate (enemyPrefab, new Vector3 (row * CellWidth, 0, column * CellHeight), Quaternion.identity);
+		}
+	}	
 }

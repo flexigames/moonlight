@@ -19,10 +19,11 @@ public class Enemy : MonoBehaviour
 
     void Update() {
         try {
-            if (lastDetectedTime + coolDown < Time.time) {
+            if (IsFollowingPlayer()) {
                 WalkToPlayer();
             } else {
-                WalkRandomly();
+                // WalkRandomly();
+                agent.isStopped = true;
             }
         } catch {
             // No Mesh yet
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
 
     void WalkToPlayer() {
         agent.SetDestination(GameObject.Find("Player").transform.position);
+        agent.isStopped = false;
         hasRandomDestination = false;
     }
 
@@ -47,6 +49,11 @@ public class Enemy : MonoBehaviour
 
         agent.SetDestination(finalPosition);
         hasRandomDestination = true;
+    }
+
+    bool IsFollowingPlayer() {
+        return !Game.isDark;
+        // return lastDetectedTime + coolDown < Time.time;
     }
 
     public void OnDetect() {
