@@ -11,6 +11,10 @@ public class Game : MonoBehaviour
 
     private static Game instance;
 
+    public GameObject lightBar;
+
+    private float lightCooldown = 0.0f;
+
     public static Game Instance {
         get {
             if (instance == null) {
@@ -24,8 +28,27 @@ public class Game : MonoBehaviour
         SetDarkness(true);
     }
 
+    void Update() {
+        if (lightCooldown < 1) {
+            lightCooldown += Time.deltaTime / 10;
+        } else {
+            lightCooldown = 1;
+        }
+        lightBar.transform.localScale = new Vector3(lightCooldown, 1, 1);
+    }
+
     public static void ToggleDarkness() {
-        SetDarkness(!isDark);
+        if (Instance.lightCooldown < 1) return;
+
+        SetDarkness(false);
+
+        Instance.StartCoroutine(Instance.WaitAndResetDarkness());
+    }
+
+    public IEnumerator WaitAndResetDarkness() {
+        yield return new WaitForSeconds(2);
+        SetDarkness(true);
+        Instance.lightCooldown = 0;
     }
 
     public static void SetDarkness(bool isDark) {
