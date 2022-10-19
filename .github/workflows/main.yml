@@ -66,6 +66,13 @@ jobs:
         with:
           name: Build
           path: build
+      - name: Change Pixel Ratio
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "// devicePixelRatio"
+          replace: "devicePixelRatio"
+          include: "/**/index.html"
+          regex: false
       - name: Itch.io - Publish
         uses: KikimoraGames/itch-publish@v0.0.3
         with:
