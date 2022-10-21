@@ -13,6 +13,8 @@ public class Grave : MonoBehaviour
 
     public AudioClip diggingSound;
 
+    public bool isDone = false;
+
     public void OnFirstInteract()
     {
         Game.SetDiggingProgress(secondsSpent / secondsNeeded);
@@ -42,6 +44,7 @@ public class Grave : MonoBehaviour
     public void OnDone()
     {
         if (coin == null) return;
+        isDone = true;
         coin.SetActive(true);
         dirt.SetActive(false);
     }

@@ -238,8 +238,8 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7611748491814124021}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &2402929131313383675
-MeshCollider:
+--- !u!65 &5653215429869516564
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -248,10 +248,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8252084882743204326, guid: 9661574ada4f84093a9bbb7970c1172c, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 3.6191661, y: 4.7553015, z: 1.5463214}
+  m_Center: {x: -0.004534602, y: 1.9022574, z: -0.014632046}
 --- !u!82 &407584051971795591
 AudioSource:
   m_ObjectHideFlags: 0
@@ -365,6 +364,20 @@ MonoBehaviour:
   secondsNeeded: 2
   secondsSpent: 0
   diggingSound: {fileID: 8300000, guid: c7a6599ffeb8a45a9accde6eba86c280, type: 3}
+  isDone: 0
+--- !u!65 &8244993530702654790
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7305741557879997604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4364567, y: 0.1, z: 4.839335}
+  m_Center: {x: -0.03059846, y: -0.14612553, z: -0.0020680428}
 --- !u!4 &7937846757672574494 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9661574ada4f84093a9bbb7970c1172c,

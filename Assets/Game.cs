@@ -38,6 +38,8 @@ public class Game : MonoBehaviour
 
     public GameObject moonpowerHint;
 
+    public GameObject diggingHint;
+
     public static bool PlayerCanDie
     {
         get
@@ -195,6 +197,7 @@ public class Game : MonoBehaviour
 
     public static void ShowDiggingIndicator()
     {
+        Instance.diggingHint.SetActive(false);
         Instance.diggingIndicator.SetActive(true);
     }
 
@@ -213,5 +216,15 @@ public class Game : MonoBehaviour
     {
         var audioSource = Instance.GetComponent<AudioSource>();
         audioSource.PlayOneShot(Instance.deathSound);
+    }
+
+    public static void ShowDiggingHint()
+    {
+        Instance.diggingHint.SetActive(true);
+    }
+
+    public static void HideDiggingHint()
+    {
+        Instance.diggingHint.SetActive(false);
     }
 }

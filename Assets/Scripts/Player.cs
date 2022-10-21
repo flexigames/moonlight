@@ -11,9 +11,11 @@ public class Player : MonoBehaviour
 
     private Vector3 lastPosition = Vector3.zero;
 
-    private float interactDistance = 3.0f;
+    public float interactDistance = 1.2f;
 
     private Grave currentGrave = null;
+
+    private bool hasDiggedOnce = false;
 
     void Start()
     {
@@ -46,6 +48,23 @@ public class Player : MonoBehaviour
         {
             TryInteractWithGrave(false);
         }
+        else
+        {
+            FindGraveAround();
+        }
+    }
+
+    void FindGraveAround()
+    {
+        var grave = FindOneOfComponentType<Grave>();
+        if (grave != null && !grave.isDone && !hasDiggedOnce)
+        {
+            Game.ShowDiggingHint();
+        }
+        else
+        {
+            Game.HideDiggingHint();
+        }
     }
 
     void TryInteractWithGrave(bool isFirst)
@@ -57,6 +76,7 @@ public class Player : MonoBehaviour
             {
                 currentGrave = grave;
                 grave.OnFirstInteract();
+                hasDiggedOnce = true;
             }
             else
             {
@@ -111,7 +131,8 @@ public class Player : MonoBehaviour
 
     List<T> FindOfComponentType<T>()
     {
-        Collider[] colldiers = Physics.OverlapSphere(transform.position, interactDistance);
+        var floorPosition = new Vector3(transform.position.x, 0, transform.position.z);
+        Collider[] colldiers = Physics.OverlapSphere(floorPosition, interactDistance, Physics.AllLayers, QueryTriggerInteraction.Collide);
         var listOfComponentTypes = new List<T>();
         foreach (Collider collider in colldiers)
         {
