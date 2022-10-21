@@ -13,6 +13,8 @@ public class Grave : MonoBehaviour
 
     public void OnFirstInteract()
     {
+        Game.SetDiggingProgress(secondsSpent / secondsNeeded);
+        Game.ShowDiggingIndicator();
         GetComponent<AudioSource>().PlayOneShot(diggingSound);
     }
 
@@ -20,17 +22,18 @@ public class Grave : MonoBehaviour
     {
         secondsSpent += Time.deltaTime;
 
-        // progressBar.SetProgress(secondsSpent / secondsNeeded);
+        Game.SetDiggingProgress(secondsSpent / secondsNeeded);
 
         if (secondsSpent > secondsNeeded)
         {
             OnDone();
+            StopInteract();
         }
     }
 
     public void StopInteract()
     {
-        secondsSpent = 0;
+        Game.HideDiggingIndicator();
         GetComponent<AudioSource>().Stop();
     }
 

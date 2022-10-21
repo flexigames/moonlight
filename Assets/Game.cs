@@ -30,6 +30,10 @@ public class Game : MonoBehaviour
 
     public AudioClip coinSound;
 
+    public GameObject diggingIndicator;
+
+    public GameObject diggingBar;
+
     public static bool PlayerCanDie
     {
         get
@@ -175,5 +179,21 @@ public class Game : MonoBehaviour
     {
         var audioSource = Instance.GetComponent<AudioSource>();
         audioSource.PlayOneShot(Instance.coinSound);
+    }
+
+    public static void ShowDiggingIndicator()
+    {
+        Instance.diggingIndicator.SetActive(true);
+    }
+
+    public static void HideDiggingIndicator()
+    {
+        Instance.diggingIndicator.SetActive(false);
+    }
+
+    public static void SetDiggingProgress(float progress)
+    {
+        if (progress > 1) progress = 1;
+        Instance.diggingBar.transform.localScale = new Vector3(progress, 1, 1);
     }
 }
