@@ -26,55 +26,75 @@ public class Game : MonoBehaviour
 
     public TextMeshProUGUI coinText;
 
-    public static bool PlayerCanDie {
-        get {
+    public static bool PlayerCanDie
+    {
+        get
+        {
             return instance.playerCanDie;
         }
     }
 
-    public static bool IsDark {
-        get {
+    public static bool IsDark
+    {
+        get
+        {
             return Instance.isDark;
         }
 
-        set {
+        set
+        {
             Instance.isDark = value;
         }
     }
 
-    public static Game Instance {
-        get {
-            if (instance == null) {
+    public static Game Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
                 instance = GameObject.FindObjectOfType<Game>();
             }
             return instance;
         }
     }
 
-    void Start() {
+    void Start()
+    {
         SetDarkness(true);
     }
 
-    void Update() {
+    void Update()
+    {
         UpdateLightCooldown();
         UpdateCoinText();
         UpdateDarkness();
+        if (collectedCoins == totalCoins)
+        {
+            SceneManager.LoadScene("Win");
+        }
     }
 
-    void UpdateLightCooldown() {
-        if (lightCooldown < 1) {
+    void UpdateLightCooldown()
+    {
+        if (lightCooldown < 1)
+        {
             lightCooldown += Time.deltaTime / 10;
-        } else {
+        }
+        else
+        {
             lightCooldown = 1;
         }
         lightBar.transform.localScale = new Vector3(lightCooldown, 1, 1);
     }
 
-    void UpdateCoinText() {
+    void UpdateCoinText()
+    {
         coinText.text = collectedCoins + "/" + totalCoins;
     }
 
-    public static void ToggleDarkness() {
+    public static void ToggleDarkness()
+    {
         if (Instance.lightCooldown < 1) return;
 
         SetDarkness(false);
@@ -82,45 +102,61 @@ public class Game : MonoBehaviour
         Instance.StartCoroutine(Instance.WaitAndResetDarkness());
     }
 
-    public IEnumerator WaitAndResetDarkness() {
+    public IEnumerator WaitAndResetDarkness()
+    {
         yield return new WaitForSeconds(2);
         SetDarkness(true);
         Instance.lightCooldown = 0;
     }
 
-    public static void SetDarkness(bool isDark) {
+    public static void SetDarkness(bool isDark)
+    {
         Game.Instance.isDark = isDark;
     }
 
-    public void UpdateDarkness() {
-        if (isDark) {
+    public void UpdateDarkness()
+    {
+        if (isDark)
+        {
             gameLight.intensity = 0.0f;
-        } else {
+        }
+        else
+        {
             gameLight.intensity = gameLightIntensity;
         }
     }
 
-    public static void GameOver() {
+    public static void GameOver()
+    {
         if (!Instance.playerCanDie) return;
 
         SetDarkness(true);
-        
+
         SceneManager.LoadScene("GameOver");
     }
 
-    public static void SetTotalCoins(int totalCoins) {
+    public static void Win()
+    {
+        SceneManager.LoadScene("Win");
+    }
+
+    public static void SetTotalCoins(int totalCoins)
+    {
         Instance.totalCoins = totalCoins;
     }
 
-    public static void AddCoinToTotal() {
+    public static void AddCoinToTotal()
+    {
         Instance.totalCoins += 1;
     }
 
-    public static void AddCoinToCollected() {
+    public static void AddCoinToCollected()
+    {
         Instance.collectedCoins += 1;
     }
 
-    public static void OnMazeDone() {
+    public static void OnMazeDone()
+    {
 
     }
 }
