@@ -89,7 +89,7 @@ public class MazeSpawner : MonoBehaviour
                     tmp = Instantiate(Wall, new Vector3(x, 0, z - CellHeight / 2) + Wall.transform.position, Quaternion.Euler(0, 180, 0)) as GameObject;// back
                     tmp.transform.parent = transform;
                 }
-                if (cell.IsGoal && GoalPrefab != null)
+                if (cell.IsGoal && GoalPrefab != null && row != 0 && column != 0)
                 {
                     var rotation = 0;
                     if (!cell.WallRight)
