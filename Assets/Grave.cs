@@ -6,6 +6,8 @@ public class Grave : MonoBehaviour
 {
     public GameObject coin;
 
+    public GameObject dirt;
+
     public float secondsNeeded = 2;
     public float secondsSpent = 0;
 
@@ -41,5 +43,6 @@ public class Grave : MonoBehaviour
     {
         if (coin == null) return;
         coin.SetActive(true);
+        dirt.SetActive(false);
     }
 }
