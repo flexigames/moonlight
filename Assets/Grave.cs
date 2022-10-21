@@ -17,6 +17,8 @@ public class Grave : MonoBehaviour
 
     public void OnFirstInteract()
     {
+        if (isDone) return;
+
         Game.SetDiggingProgress(secondsSpent / secondsNeeded);
         Game.ShowDiggingIndicator();
         GetComponent<AudioSource>().PlayOneShot(diggingSound);
@@ -24,6 +26,8 @@ public class Grave : MonoBehaviour
 
     public void Interact()
     {
+        if (isDone) return;
+
         secondsSpent += Time.deltaTime;
 
         Game.SetDiggingProgress(secondsSpent / secondsNeeded);
