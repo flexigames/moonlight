@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
+using System.Collections.Generic;
 
 //<summary>
 //Game object, that creates maze and instantiates it in scene
@@ -59,6 +60,35 @@ public class MazeSpawner : MonoBehaviour
         }
         mMazeGenerator.GenerateMaze();
 
+        List<MazeCell> goals = new List<MazeCell>();
+
+        for (int row = 1; row < Rows; row++)
+        {
+            for (int column = 1; column < Columns; column++)
+            {
+                MazeCell cell = mMazeGenerator.GetMazeCell(row, column);
+                if (cell.IsGoal)
+                {
+                    goals.Add(cell);
+                }
+            }
+        }
+
+        // shuffle array
+        for (int i = 0; i < goals.Count; i++)
+        {
+            MazeCell temp = goals[i];
+            int randomIndex = Random.Range(i, goals.Count);
+            goals[i] = goals[randomIndex];
+            goals[randomIndex] = temp;
+        }
+
+        var maxNumberOfGoals = 5;
+
+        goals = goals.GetRange(0, Mathf.Min(goals.Count, maxNumberOfGoals));
+
+
+
         for (int row = 0; row < Rows; row++)
         {
             for (int column = 0; column < Columns; column++)
@@ -89,7 +119,7 @@ public class MazeSpawner : MonoBehaviour
                     tmp = Instantiate(Wall, new Vector3(x, 0, z - CellHeight / 2) + Wall.transform.position, Quaternion.Euler(0, 180, 0)) as GameObject;// back
                     tmp.transform.parent = transform;
                 }
-                if (cell.IsGoal && GoalPrefab != null && row != 0 && column != 0)
+                if (cell.IsGoal && goals.Contains(cell) && GoalPrefab != null && row != 0 && column != 0)
                 {
                     var rotation = 0;
                     if (!cell.WallRight)
