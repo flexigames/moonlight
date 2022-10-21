@@ -248,7 +248,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3bf678e7a06174fa0b4343e7189a3a98,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.32
+      value: 0.383
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bf678e7a06174fa0b4343e7189a3a98,
         type: 3}
@@ -263,17 +263,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3bf678e7a06174fa0b4343e7189a3a98,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bf678e7a06174fa0b4343e7189a3a98,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bf678e7a06174fa0b4343e7189a3a98,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bf678e7a06174fa0b4343e7189a3a98,
         type: 3}
@@ -575,7 +575,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461177195}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0.6655152, y: -1.6533334, z: 0.03999988}
+  m_LocalPosition: {x: -0.13, y: -1.6533334, z: 0.03999988}
   m_LocalScale: {x: 3.3333333, y: 3.3333328, z: 3.333333}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1404,7 +1404,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.82
+  m_Intensity: 0.61
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1447,7 +1447,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 5000
+  m_ColorTemperature: 2944
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -1802,10 +1802,30 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 91e974db2ed374e89bbcbbbbaf932bf2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: 91e974db2ed374e89bbcbbbbaf932bf2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 91e974db2ed374e89bbcbbbbaf932bf2,
         type: 3}
       propertyPath: m_Name
       value: grave-robber-character
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 91e974db2ed374e89bbcbbbbaf932bf2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: 91e974db2ed374e89bbcbbbbaf932bf2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91e974db2ed374e89bbcbbbbaf932bf2, type: 3}
