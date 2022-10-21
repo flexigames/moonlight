@@ -481,7 +481,7 @@ MonoBehaviour:
 
     Press E to Toggle on the Moonlight
 
-    Hold W to Dig
+    Hold Q to Dig
     Up a Grave'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cb57e5bab41dd40bfb1b69839c2938e5, type: 2}
