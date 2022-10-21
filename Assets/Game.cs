@@ -28,6 +28,8 @@ public class Game : MonoBehaviour
 
     public AudioClip howlSound;
 
+    public AudioClip coinSound;
+
     public static bool PlayerCanDie
     {
         get
@@ -166,5 +168,11 @@ public class Game : MonoBehaviour
     {
         var audioSource = Instance.GetComponent<AudioSource>();
         audioSource.PlayOneShot(Instance.howlSound);
+    }
+
+    public static void PlayCoinSound()
+    {
+        var audioSource = Instance.GetComponent<AudioSource>();
+        audioSource.PlayOneShot(Instance.coinSound);
     }
 }
