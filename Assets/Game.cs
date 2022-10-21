@@ -18,7 +18,7 @@ public class Game : MonoBehaviour
 
     public GameObject lightBar;
 
-    private float lightCooldown = 1.0f;
+    private float lightCooldown = 0.5f;
 
     public int totalCoins = 0;
 
@@ -33,6 +33,8 @@ public class Game : MonoBehaviour
     public GameObject diggingIndicator;
 
     public GameObject diggingBar;
+
+    public GameObject moonpowerHint;
 
     public static bool PlayerCanDie
     {
@@ -92,6 +94,7 @@ public class Game : MonoBehaviour
         else
         {
             lightCooldown = 1;
+            if (isDark) moonpowerHint.SetActive(true);
         }
         lightBar.transform.localScale = new Vector3(lightCooldown, 1, 1);
     }
@@ -107,6 +110,7 @@ public class Game : MonoBehaviour
 
         Game.PlayHowl();
         SetDarkness(false);
+        Instance.moonpowerHint.SetActive(false);
 
         Instance.StartCoroutine(Instance.WaitAndResetDarkness());
     }
