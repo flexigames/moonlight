@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     private Vector3 lastPosition = Vector3.zero;
 
-    private float interactDistance = 2.0f;
+    private float interactDistance = 3.0f;
 
     private Grave currentGrave = null;
 
