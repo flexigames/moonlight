@@ -26,6 +26,8 @@ public class Game : MonoBehaviour
 
     public TextMeshProUGUI coinText;
 
+    public AudioClip howlSound;
+
     public static bool PlayerCanDie
     {
         get
@@ -158,5 +160,11 @@ public class Game : MonoBehaviour
     public static void OnMazeDone()
     {
 
+    }
+
+    public static void PlayHowl()
+    {
+        var audioSource = Instance.GetComponent<AudioSource>();
+        audioSource.PlayOneShot(Instance.howlSound);
     }
 }

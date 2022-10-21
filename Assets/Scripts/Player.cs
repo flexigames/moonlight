@@ -25,26 +25,34 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Game.ToggleDarkness();
+            Game.PlayHowl();
         }
     }
 
-    void HandleRunningCloud() {
+    void HandleRunningCloud()
+    {
         if (runningCloud == null) return;
 
-        if (lastPosition != transform.position) {
-            if (!runningCloud.isEmitting) {
+        if (lastPosition != transform.position)
+        {
+            if (!runningCloud.isEmitting)
+            {
                 runningCloud.Play();
             }
             lastPosition = transform.position;
-        } else {
-            if (runningCloud.isEmitting) {
+        }
+        else
+        {
+            if (runningCloud.isEmitting)
+            {
                 runningCloud.Stop();
             }
         }
     }
 
-    void HandleRunning() {
-        Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));   
+    void HandleRunning()
+    {
+        Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
         if (direction.magnitude < 0.01f) return;
 
@@ -57,7 +65,8 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Coin") {
+        if (other.gameObject.tag == "Coin")
+        {
             Destroy(other.gameObject);
             Game.AddCoinToCollected();
         }
