@@ -93,7 +93,7 @@ public class Game : MonoBehaviour
     {
         if (lightCooldown < 1)
         {
-            lightCooldown += Time.deltaTime / 10;
+            lightCooldown += Time.deltaTime / 7;
         }
         else
         {
