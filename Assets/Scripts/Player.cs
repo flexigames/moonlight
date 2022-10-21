@@ -17,9 +17,12 @@ public class Player : MonoBehaviour
 
     private bool hasDiggedOnce = false;
 
+    private AudioSource stepsAudio;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        stepsAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -57,7 +60,7 @@ public class Player : MonoBehaviour
     void FindGraveAround()
     {
         var grave = FindOneOfComponentType<Grave>();
-        if (grave != null && !grave.isDone && !hasDiggedOnce)
+        if (grave != null && !grave.isDone)
         {
             Game.ShowDiggingHint();
         }
@@ -110,7 +113,17 @@ public class Player : MonoBehaviour
     {
         Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
-        if (direction.magnitude < 0.01f) return;
+        if (direction.magnitude < 0.01f)
+        {
+            stepsAudio.Stop();
+            return;
+        }
+
+        if (!stepsAudio.isPlaying)
+        {
+            stepsAudio.Play();
+        }
+
 
         direction.Normalize();
 
