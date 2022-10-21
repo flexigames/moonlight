@@ -30,6 +30,8 @@ public class Game : MonoBehaviour
 
     public AudioClip coinSound;
 
+    public AudioClip deathSound;
+
     public GameObject diggingIndicator;
 
     public GameObject diggingBar;
@@ -143,8 +145,14 @@ public class Game : MonoBehaviour
     {
         if (!Instance.playerCanDie) return;
 
-        SetDarkness(true);
+        PlayDeathSound();
 
+        Instance.StartCoroutine(Instance.WaitAndLoadGameOver());
+    }
+
+    public IEnumerator WaitAndLoadGameOver()
+    {
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("GameOver");
     }
 
@@ -199,5 +207,11 @@ public class Game : MonoBehaviour
     {
         if (progress > 1) progress = 1;
         Instance.diggingBar.transform.localScale = new Vector3(progress, 1, 1);
+    }
+
+    public static void PlayDeathSound()
+    {
+        var audioSource = Instance.GetComponent<AudioSource>();
+        audioSource.PlayOneShot(Instance.deathSound);
     }
 }

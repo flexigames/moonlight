@@ -1531,6 +1531,7 @@ MonoBehaviour:
   coinText: {fileID: 561278409}
   howlSound: {fileID: 8300000, guid: c2dc1993322b6472aa6a0e267fb2286f, type: 3}
   coinSound: {fileID: 8300000, guid: 1a0fa8e0ff3214f758333769d768f080, type: 3}
+  deathSound: {fileID: 8300000, guid: df0f54e37553646729281136c17e974a, type: 3}
   diggingIndicator: {fileID: 112901803}
   diggingBar: {fileID: 1179767029}
   moonpowerHint: {fileID: 208987511}
