@@ -101,6 +101,7 @@ public class Game : MonoBehaviour
     {
         if (Instance.lightCooldown < 1) return;
 
+        Game.PlayHowl();
         SetDarkness(false);
 
         Instance.StartCoroutine(Instance.WaitAndResetDarkness());

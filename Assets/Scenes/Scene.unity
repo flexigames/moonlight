@@ -1217,7 +1217,7 @@ MonoBehaviour:
   collectedCoins: 0
   coinText: {fileID: 561278409}
   howlSound: {fileID: 8300000, guid: c2dc1993322b6472aa6a0e267fb2286f, type: 3}
-  coinSound: {fileID: 8300000, guid: 4b80d138fb8b1488d98597ee69188e41, type: 3}
+  coinSound: {fileID: 8300000, guid: 1a0fa8e0ff3214f758333769d768f080, type: 3}
 --- !u!4 &988752334
 Transform:
   m_ObjectHideFlags: 0

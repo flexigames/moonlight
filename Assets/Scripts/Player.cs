@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
 
     private Vector3 lastPosition = Vector3.zero;
 
+    private float interactDistance = 2.0f;
+
+    private Grave currentGrave = null;
 
     void Start()
     {
@@ -25,7 +28,40 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Game.ToggleDarkness();
-            Game.PlayHowl();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            if (currentGrave != null)
+            {
+                currentGrave.StopInteract();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            TryInteractWithGrave(true);
+        }
+        else if (Input.GetKey(KeyCode.Q))
+        {
+            TryInteractWithGrave(false);
+        }
+    }
+
+    void TryInteractWithGrave(bool isFirst)
+    {
+        var grave = FindOneOfComponentType<Grave>();
+        if (grave != null)
+        {
+            if (isFirst)
+            {
+                currentGrave = grave;
+                grave.OnFirstInteract();
+            }
+            else
+            {
+                grave.Interact();
+            }
         }
     }
 
@@ -71,5 +107,26 @@ public class Player : MonoBehaviour
             Game.PlayCoinSound();
             Game.AddCoinToCollected();
         }
+    }
+
+    List<T> FindOfComponentType<T>()
+    {
+        Collider[] colldiers = Physics.OverlapSphere(transform.position, interactDistance);
+        var listOfComponentTypes = new List<T>();
+        foreach (Collider collider in colldiers)
+        {
+            T componentType = collider.GetComponent<T>();
+            if (componentType != null) listOfComponentTypes.Add(componentType);
+        }
+        return listOfComponentTypes;
+    }
+
+    T FindOneOfComponentType<T>()
+    {
+        List<T> componentTypes = FindOfComponentType<T>();
+
+        if (componentTypes.Count > 0) return componentTypes[0];
+
+        return default(T);
     }
 }
